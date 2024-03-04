@@ -31,4 +31,6 @@ jobs:
       if: runner.os == 'Windows'
     - name: Show MAVEN_WRAPPER_HOME
       run: echo ${{ env.MAVEN_WRAPPER_HOME }}
+    - name: Build with Maven
+      run: mvn verify "-Dmaven.home=${{ env.MAVEN_WRAPPER_HOME }}"
 

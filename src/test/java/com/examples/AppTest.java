@@ -1,6 +1,6 @@
 package com.examples;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -9,12 +9,11 @@ import org.junit.Test;
  */
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
     @Test
     public void shouldAnswerWithTrue()
     {
-        assertTrue( true );
+        Object mavenHome = System.getProperty("maven.home");
+        System.out.println("maven.home=" + mavenHome);
+        assertNull(mavenHome);
     }
 }
