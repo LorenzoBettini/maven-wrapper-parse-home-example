@@ -12,8 +12,8 @@ public class AppTest
     @Test
     public void shouldAnswerWithTrue()
     {
-        Object mavenHome = System.getProperty("maven.home");
+        String mavenHome = System.getProperty("maven.home");
         System.out.println("maven.home=" + mavenHome);
-        assertNull(mavenHome);
+        assertNotNull(mavenHome);
     }
 }
