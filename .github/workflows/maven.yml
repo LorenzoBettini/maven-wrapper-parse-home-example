@@ -24,8 +24,11 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Set Maven Home environment variable
-      run: echo "MAVEN_WRAPPER_HOME=atest" >> "$GITHUB_ENV"
+      run: echo "MAVEN_WRAPPER_HOME=$(./mvnw --version | grep "Maven home:" | cut -c 13-)" >> "$GITHUB_ENV"
+      if: runner.os != 'Windows'
+    - name: Set Maven Home environment variable on Windows
+      run: echo "MAVEN_WRAPPER_HOME=$(./mvnw --version | grep "Maven home:" | cut -c 13-)" | Out-File -FilePath $env:GITHUB_ENV -Append
+      if: runner.os == 'Windows'
     - name: Show MAVEN_WRAPPER_HOME
       run: echo $MAVEN_WRAPPER_HOME
-    - name: Build with Maven
-      run: mvn verify
+
