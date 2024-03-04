@@ -23,5 +23,9 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: Set Maven Home environment variable
+      run: echo "MAVEN_WRAPPER_HOME=$(./mvnw --version | grep "Maven home:" | cut -c 13-)" >> $GITHUB_ENV
+    - name: Show MAVEN_WRAPPER_HOME
+      run: echo $MAVEN_WRAPPER_HOME
     - name: Build with Maven
       run: mvn verify
